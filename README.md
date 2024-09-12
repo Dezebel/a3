@@ -11,6 +11,112 @@ A screenshot of Postman working on the Laravel side and the React app fetching t
 
 https://drive.google.com/file/d/1wI3KM1V4q3_RgM4v9UFNIaN2V0X_pIpz/view?usp=sharing
 
+
+
+
+## Assignment 3 - Instructions for Setting Up and Running the ReactJS Frontend and Laravel Backend
+
+1. Setting Up the Laravel Backend
+
+   Prerequisites:
+   - PHP (version 8.0 or higher)
+   - Composer (PHP dependency manager)
+   - Laravel (latest version preferred)
+   - MongoDB
+   - Web server (e.g., Apache or Nginx) or `php artisan serve` for development
+
+   Steps:
+
+   1. Clone the Laravel Repository:
+      ```
+      git clone <repository-url>
+      cd <laravel-project-directory>
+      ```
+
+   2. Install Dependencies:
+      ```
+      composer install
+      ```
+
+   3. Environment Configuration:
+      - Copy the example environment file and create a new `.env` file:
+        ```
+        cp .env.example .env
+        ```
+      - Generate a new application key:
+        ```
+        php artisan key:generate
+        ```
+      - Configure the `.env` file with your MongoDB credentials and other necessary settings.
+
+   4. Run Migrations (if applicable):
+      ```
+      php artisan migrate
+      ```
+
+   5. Run the Development Server:
+      ```
+      php artisan serve
+      ```
+      The application will be accessible at `http://127.0.0.1:8000` by default.
+
+   6. API Routes:
+      - Ensure API routes are correctly defined in `routes/web.php`.
+      - Example routes:
+        ```
+        Route::get('/posts', [PostController::class, 'index']);
+        Route::get('/posts/{id}', [PostController::class, 'show']);
+        ```
+
+2. Setting Up the ReactJS Frontend
+
+   Prerequisites:
+   - Node.js (version 14 or higher)
+   - npm (Node Package Manager)
+
+   Steps:
+
+   1. Clone the React Repository:
+      ```
+      git clone <repository-url>
+      cd <react-project-directory>
+      ```
+
+   2. Install Dependencies:
+      ```
+      npm install
+      ```
+
+   3. Run the Development Server:
+      ```
+      npm start
+      ```
+      The application will be accessible at `http://localhost:3000` by default.
+
+   4. API Integration:
+      - Ensure the frontend API calls are pointing to the correct Laravel backend URL.
+      - Example fetch call in React:
+        ```javascript
+        fetch('http://127.0.0.1:8000/posts?callback=?')  // Using JSONP to avoid CORS issues
+          .then(response => response.json())
+          .then(data => console.log(data));
+        ```
+
+3. Using JSONP to Avoid CORS Issues
+
+   - To avoid CORS (Cross-Origin Resource Sharing) issues, we are using JSONP (JSON with Padding) in our API calls.
+   - JSONP allows requests for JSON data from a different domain by using a `<script>` tag instead of an XMLHttpRequest. It works around the CORS restrictions.
+   - Example:
+     - In the React App: Use `fetch` with `?callback=?` added to the API endpoint URL.
+
+4. Common Issues and Tips
+
+   - Ensure both the Laravel `.env` settings and React API URLs are correctly configured for seamless communication.
+   - Test both frontend and backend setups by accessing:
+     - Laravel API: `http://127.0.0.1:8000/posts?callback=?`
+     - React App: `http://localhost:3000/posts`
+
+
 ## Assignment 3 - Issues Faced and Solutions
 
 1. CORS Issues
