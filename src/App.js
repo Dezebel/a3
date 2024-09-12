@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import jsonp from 'jsonp'; // Import the JSONP library
+import jsonp from 'jsonp';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import './App.css'; // Ensure you import your CSS file
 
 const App = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    // Make a JSONP request
     jsonp('http://myblog.test/posts?callback=callback', null, (err, data) => {
       if (err) {
         console.error('Error fetching posts:', err);
       } else {
-        console.log(data); // Logs data to ensure it's correct
-        setPosts(data); // Update state with fetched posts
+        console.log(data);
+        setPosts(data);
       }
     });
   }, []);
@@ -21,7 +20,9 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <h1>Blog Posts</h1>
+        <header className="App-header">
+          <h1>Blog Posts</h1>
+        </header>
         <Routes>
           <Route
             path="/posts"
@@ -29,9 +30,8 @@ const App = () => {
               <div>
                 {posts.length > 0 ? (
                   posts.map((post) => (
-                    <div key={post._id}>
+                    <div key={post._id} className="blog-post">
                       <h2>{post.title}</h2>
-                      {/* Ensure 'content' is being displayed */}
                       <p>{post.content}</p>
                     </div>
                   ))

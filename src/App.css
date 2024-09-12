@@ -1,38 +1,57 @@
+/* General App styling */
 .App {
-  text-align: center; color:blue;
+  text-align: center;
+  background-color: #f4f4f4; /* Light background for the app */
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  color: #333; /* Darker text color for readability */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Blog Post Container */
+.blog-post {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Blog Post Title */
+.blog-post h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
+/* Blog Post Content */
+.blog-post p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Hover Effects */
+.blog-post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Header Styling */
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 8px;
 }
 
+/* Link Styling */
 .App-link {
   color: #61dafb;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-link:hover {
+  text-decoration: underline;
 }
