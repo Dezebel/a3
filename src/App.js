@@ -7,7 +7,7 @@ const App = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    jsonp('http://myblog.test/posts?callback=callback', null, (err, data) => {
+    jsonp('http://13.55.110.241/posts?callback=callback', null, (err, data) => {
       if (err) {
         console.error('Error fetching posts:', err);
       } else {
